@@ -1,23 +1,25 @@
 const kafka = require('kafka-node');
 
 const ProducerLib = {
-  Producer: kafka.Producer,
+  client: new kafka.KafkaClient('localhost:9092'),
 
-  Client: new kafka.KafkaClient('localhost:9092'),
-
-  producer: new Producer(client),
+  configProducer(){
+    const Producer = kafka.Producer
+    return new Producer(this.client)
+  },
 
   async handle(kafkaTopic,payload){
     const payloadWithTopic = {topic:kafkaTopic,payload}
-    producer.on('ready', async function() {
+    return new Promise((resolve,reject) => {
       producer.send(payloadWithTopic, (err, data) => {
-        if (err) {
-          console.log(err)
-          return;
-        }
-        console.log('producer send request');
-      });
-    });
+      if (err) {
+        console.error(err)
+        reject(err)
+      }
+        console.log('producer send request')
+        resolve(true)
+      })
+    })
   },
 }
 module.exports={ProducerLib}

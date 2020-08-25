@@ -1,12 +1,14 @@
 const kafka = require('kafka-node');
 
 const ConsumerLib = {
-  Consumer: kafka.Consumer,
+  client:new kafka.KafkaClient('localhost:9092'),
+
 
   async configConsumer(kafkaTopic){
-    const client = new kafka.KafkaClient('localhost:9092');
+    const Consumer = kafka.Consumer
+
     return new Consumer(
-      client,
+      this.client,
       [{ topic: kafkaTopic, partition: 0 }],
       {
         autoCommit: true,
