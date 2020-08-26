@@ -22,14 +22,15 @@ class Kafka {
     this.consumer.addTopics([{ topic: `${topic}-response`, partition: 0 }])
     const messageId = v4();
 
-    this.producer.send([{
+    await this.send(
       topic,
-      messages: JSON.stringify(message),
-      key: messageId
-    }], ()=> console.log('enviou'))
+      message,
+      messageId
+    )
 
     const {data, funct} = await new Promise (async(resolve, reject) => { 
      const funct = async function(message) {
+       console.log(message)
         if(messageId === message.key){
           resolve({data:JSON.parse(message.value), funct}); 
         }
@@ -45,12 +46,15 @@ class Kafka {
   }
 
   async send(topic, message, key = v4()) {
-    new Promise (async(resolve, reject) => {this.producer.send([{
-      topic,
-      messages: JSON.stringify(message),
-      key: key
-    }], ()=> console.log('enviou'))
-  })
+    return new Promise (async(resolve, reject) => {
+      console.log(key)
+      this.producer.send([{
+        topic,
+        messages: JSON.stringify(message),
+        key: key
+      }], ()=> resolve())
+    })
+  }
 }
 
 module.exports = new Kafka();

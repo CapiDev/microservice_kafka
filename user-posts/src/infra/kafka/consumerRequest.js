@@ -1,15 +1,16 @@
 const kafka = require('kafka-node');
 
 const ConsumerLib = {
-  client:new kafka.KafkaClient('localhost:9092'),
 
 
-  async configConsumer(kafkaTopic){
+  async configConsumer(topic){
+    const client = new kafka.KafkaClient('localhost:9092')
+
     const Consumer = kafka.Consumer
 
-    return new Consumer(
-      this.client,
-      [{ topic: kafkaTopic, partition: 0 }],
+    const consumer = new Consumer(
+      client,
+      [],
       {
         autoCommit: true,
         fetchMaxWaitMs: 1000,
@@ -17,21 +18,10 @@ const ConsumerLib = {
         encoding: 'utf8',
         fromOffset: false
       }
-    );
+    )
+    consumer.addTopics([{ topic, partition: 0 }])
+    return consumer
   },
-
-
-  async handle(kafkaTopic){
-    const consumer = this.configConsumer(kafkaTopic)
-    const messageResponse = new Promise((resolve,rejected)=>{
-      consumer.on('message', async function(message) {
-        if(message.value){
-          return resolve(message.value)
-        }
-        rejected(message)
-      })
-    })
-    return messageResponse
-  }
+ 
 }
 module.exports={ConsumerLib}

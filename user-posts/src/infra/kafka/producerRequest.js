@@ -8,8 +8,10 @@ const ProducerLib = {
     return new Producer(this.client)
   },
 
-  async handle(kafkaTopic,payload){
-    const payloadWithTopic = {topic:kafkaTopic,payload}
+  async handle(kafkaTopic,messages,key){
+    const payloadWithTopic = [{topic:kafkaTopic, messages:JSON.stringify(messages), key}]
+    const producer = this.configProducer()
+
     return new Promise((resolve,reject) => {
       producer.send(payloadWithTopic, (err, data) => {
       if (err) {
@@ -19,6 +21,7 @@ const ProducerLib = {
         console.log('producer send request')
         resolve(true)
       })
+    
     })
   },
 }
