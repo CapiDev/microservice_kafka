@@ -26,36 +26,30 @@ function createConsumer(topic, handle){
 }
 
 createConsumer('create-user', async(message)=>{
-  console.log(message);
   const data = JSON.parse(message.value)
   const user = await User.create(data.message.body);
   await kafka.send('create-user-response',user, message.key)
 }) 
 
 createConsumer('get-user', async(message)=>{
-  console.log(message);
   const data = JSON.parse(message.value)
   const user = await User.findById(data.message.body.id);
   await kafka.send('get-user-response',user, message.key)
 })
 
 createConsumer('list-user', async(message)=>{
-  console.log(message);
   const users = await User.find();
-  await kafka.send('get-user-response',users, message.key)
-})
+  await kafka.send('list-user-response',users, message.key)
+}) 
 
-// createConsumer(topic, async(message)=>{
-//   console.log(message);
-//   const data = JSON.parse(message.value)
-//   const user = await User.create(data.message.body);
-//   await kafka.send(`${topic}-response`,user, message.key)
-// })
+createConsumer('update-user', async(message)=>{
+  const data = JSON.parse(message.value)
+  const users = await User.findByIdAndUpdate(data.message.body.id, data);
+  await kafka.send('update-user-response',users, message.key)
+}) 
 
-// createConsumer(topic, async(message)=>{
-//   console.log(message);
-//   const data = JSON.parse(message.value)
-//   const user = await User.create(data.message.body);
-//   await kafka.send(`${topic}-response`,user, message.key)
-// })
+createConsumer('delete-user', async(message)=>{
+  const users = await User.findByIdAndDelete(data.message.body.id);
+  await kafka.send('delete-user-response',users, message.key)
+}) 
 

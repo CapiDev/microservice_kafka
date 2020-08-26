@@ -32,6 +32,19 @@ server.get('/users/:id', async (req, res) => {
   })
 })
 
+server.put('/users/:id', async (req, res) => {
+  const payload = req.body
+
+  const data = await kafka.request('update-user', {message:{
+    date:new Date(),    
+    body:{id: req.params.id, ...payload} 
+  }})
+ 
+  res.json({
+    response: data
+  })
+})
+
 server.get('/users', async (req, res) => {
   const payload = req.body
 
