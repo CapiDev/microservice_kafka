@@ -21,7 +21,7 @@ Made in 2 Hours
 
 | [<img src="https://avatars2.githubusercontent.com/u/36626531?s=460&u=da84eeb9d23a33b11f45d81dd91a4e4d6f31fb34&v=4" width="75px;"/>](https://github.com/BetaMedina) | [<img src="https://avatars0.githubusercontent.com/u/37014907?s=460&u=9664af199c529b7952f782060f1b223974c14fab&v=4" width="75px;"/>](https://github.com/diogomachado1) |
 | :-----------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------: |
-|                                       [Joao Medina](https://github.com/BetaMedina)                                  |                                      [Diogo O Lindo](https://github.com/diogomachado1)                                    |
+|                                       [Joao Medina](https://github.com/BetaMedina)                                  |                                      [Diogo Machado](https://github.com/diogomachado1)                                    |
 ## What can be better?
 
 - Clean workers;
