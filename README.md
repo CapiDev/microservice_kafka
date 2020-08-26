@@ -8,7 +8,7 @@ Made in 2 Hours
 
 <p align="center">
   <a href="https://github.com/CapiDev/microservice_kafka/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/CapiDev/microservice_kafka/?color=%7CFC00&logoColor=%237159c1&style=flat" alt="Contributors">
+    <img src="https://img.shields.io/github/contributors/capiDev/microservice_kafka?color=%7CFC00&logoColor=%237159c1&style=flat" alt="Contributors">
   </a>
   <a href="https://opensource.org/licenses/MIT">
     <img src="https://img.shields.io/github/license/CapiDev/microservice_kafka?color=%7CFC00&logo=mit" alt="License">
