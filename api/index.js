@@ -45,6 +45,17 @@ server.put('/users/:id', async (req, res) => {
   })
 })
 
+server.delete('/users/:id', async (req, res) => {
+  const data = await kafka.request('delete-user', {message:{
+    date:new Date(),    
+    body:{id: req.params.id} 
+  }})
+  
+  res.json({
+    response: data
+  })
+})
+
 server.get('/users', async (req, res) => {
   const payload = req.body
 

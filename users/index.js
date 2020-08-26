@@ -44,11 +44,12 @@ createConsumer('list-user', async(message)=>{
 
 createConsumer('update-user', async(message)=>{
   const data = JSON.parse(message.value)
-  const users = await User.findByIdAndUpdate(data.message.body.id, data);
+  const users = await User.findByIdAndUpdate(data.message.body.id, data.message.body, {new: true});
   await kafka.send('update-user-response',users, message.key)
 }) 
 
-createConsumer('delete-user', async(message)=>{
+createConsumer('delete-user', async(message)=>{ 
+  const data = JSON.parse(message.value)
   const users = await User.findByIdAndDelete(data.message.body.id);
   await kafka.send('delete-user-response',users, message.key)
 }) 

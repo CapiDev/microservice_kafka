@@ -47,7 +47,7 @@ class Kafka {
 
   async send(topic, message, key = v4()) {
     return new Promise (async(resolve, reject) => {
-      console.log(key)
+      console.log(topic)
       this.producer.send([{
         topic,
         messages: JSON.stringify(message),
