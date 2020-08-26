@@ -7,11 +7,11 @@ Made in 2 Hours
 <p align="center">In this code challenge we developed a REST API in Node.js that integrates with a micro-service using Apache Kafka.</p>
 
 <p align="center">
-  <a href="https://github.com/Rocketseat/youtube-challenge-node-kafka/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/rocketseat/youtube-challenge-node-kafka?color=%237159c1&logoColor=%237159c1&style=flat" alt="Contributors">
+  <a href="https://github.com/CapiDev/microservice_kafka/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/CapiDev/microservice_kafka/?color=%7CFC00&logoColor=%237159c1&style=flat" alt="Contributors">
   </a>
   <a href="https://opensource.org/licenses/MIT">
-    <img src="https://img.shields.io/github/license/rocketseat/youtube-challenge-node-kafka?color=%237159c1&logo=mit" alt="License">
+    <img src="https://img.shields.io/github/license/CapiDev/microservice_kafka?color=%7CFC00&logo=mit" alt="License">
   </a>
 </p>
 
